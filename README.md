@@ -1,9 +1,9 @@
 CollectionViewWaterfallLayout
 ========================
 
-Pinterest inspired layout for UICollectionViews
+Pinterest inspired layout for UICollectionViews with Sticky Header
 
-**Note: Updated for Swift 2.0 and cocoapods**
+**Note: Updated for Swift 2.3 and cocoapods**
 
 **CollectionViewWaterfallLayout** is a subclass of [UICollectionViewLayout](https://developer.apple.com/library/ios/documentation/uikit/reference/UICollectionViewLayout_class/Reference/Reference.html) written completely in Swift. This class is based off [CHTCollectionViewWaterfallLayout](https://github.com/chiahsien/CHTCollectionViewWaterfallLayout) which was written by [chiahsien](https://github.com/chiahsien) in Objective C. This class tries to use as many new Swifty things to keep the code updated with current design patterns.
 
@@ -15,24 +15,26 @@ Features
 * Highly Customizable
 * Outstanding Performance
 * Supports headers and footers
+* With Sticky Header
 
 Screen Shots
 -----------
 ![Real World Example](/Screenshots/RealWorldExample.png?raw=true "Real World Example") 
-![Demo Example](/Screenshots/DemoExample.png?raw=true "Demo Example")
+![Demo Example Top](/Screenshots/DemoExample.png?raw=true "Demo Example Top")
+![Demo Example Bottom](/Screenshots/DemoExampleSticky.png?raw=true "Demo Example Bottom")
 
 Prerequisites
 -----------
 * ARC
 * iOS 7+
 * Xcode 7+
-* Swift 2.0
+* Swift 2.3
 
 Installation
 -----------
 CollectionViewWaterfallLayout is available through CocoaPods. To install it, simply add the following line to your Podfile:
 ```
-pod "CollectionViewWaterfallLayout"
+pod "CollectionViewWaterfallLayoutSH"
 ```
 
 How to Use

@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
+    var headerHeight:Float = 100
     
     lazy var cellSizes: [CGSize] = {
         var _cellSizes = [CGSize]()
@@ -30,14 +31,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         
         let layout = CollectionViewWaterfallLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.headerInset = UIEdgeInsetsMake(20, 0, 0, 0)
-        layout.headerHeight = 50
+        layout.headerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.headerHeight = self.headerHeight
         layout.footerHeight = 20
         layout.minimumColumnSpacing = 10
         layout.minimumInteritemSpacing = 10
         
+        layout.headerStickyInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.headerStickyHeight = 50
+        
         collectionView.collectionViewLayout = layout
-        collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, withReuseIdentifier: "Header")
+        //collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderSticky")
+        let headerNib = UINib(nibName: "HeaderCollectionReusableView", bundle: nil)
+        collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, withReuseIdentifier: "Header")
         collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, withReuseIdentifier: "Footer")
     }
     
@@ -70,8 +76,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         if kind == CollectionViewWaterfallElementKindSectionHeader {
             reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath)
             
-            if let view = reusableView {
-                view.backgroundColor = UIColor.redColor()
+            if let stickyView = reusableView as? HeaderCollectionReusableView {
+                stickyView.delegate = self
+                stickyView.collectionView = self.collectionView
+                stickyView.section = indexPath.section
             }
         }
         else if kind == CollectionViewWaterfallElementKindSectionFooter {
@@ -80,8 +88,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
                 view.backgroundColor = UIColor.blueColor()
             }
         }
+        else if kind == UICollectionElementKindSectionHeader {
+            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "HeaderSticky", forIndexPath: indexPath)
+        }
         
         return reusableView!
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, heightForHeaderInSection section: Int) -> Float {
+        return self.headerHeight
+    }
+    
+    func collectionView(collectionView: UICollectionView, height: Float, heightForHeaderInSection section: Int) -> Bool {
+        let layout = collectionView.collectionViewLayout as! CollectionViewWaterfallLayout
+        
+        self.headerHeight = height
+        layout.headerHeight = self.headerHeight
+        layout.invalidateLayout()
+        
+        return true
     }
     
     // MARK: WaterfallLayoutDelegate

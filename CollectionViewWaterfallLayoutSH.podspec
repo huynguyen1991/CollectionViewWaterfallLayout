@@ -15,12 +15,12 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "CollectionViewWaterfallLayout"
-  s.version      = "0.2.2"
-  s.summary      = "Pinterest inspired layout for UICollectionViews written in Swift"
+  s.name         = "CollectionViewWaterfallLayoutSH"
+  s.version      = "0.3.0"
+  s.summary      = "Pinterest inspired layout for UICollectionViews written in Swift with Sticky Header"
   # s.description  = <<-DESC
-  s.homepage     = "https://github.com/ecerney/CollectionViewWaterfallLayout"
-  s.screenshots  = "https://raw.githubusercontent.com/ecerney/CollectionViewWaterfallLayout/master/Screenshots/RealWorldExample.png", "https://raw.githubusercontent.com/ecerney/CollectionViewWaterfallLayout/master/Screenshots/DemoExample.png"
+  s.homepage     = "https://github.com/yesjun/CollectionViewWaterfallLayout"
+  s.screenshots  = "https://raw.githubusercontent.com/yesjun/CollectionViewWaterfallLayout/master/Screenshots/RealWorldExample.png", "https://raw.githubusercontent.com/yesjun/CollectionViewWaterfallLayout/master/Screenshots/DemoExample.png", "https://raw.githubusercontent.com/yesjun/CollectionViewWaterfallLayout/master/Screenshots/DemoExampleSticky.png"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -44,9 +44,9 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
   
-  s.author             = "Eric Cerney"
-  # s.authors            = { "Eric Cerney" => "ecerney@gmail.com" }
-  s.social_media_url   = "https://twitter.com/ecerney"
+  s.author             = "Jun"
+  # s.authors            = { "Jun" => "yesjun@gmail.com" }
+  s.social_media_url   = "https://yesjun.wordpress.com/"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -67,7 +67,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ecerney/CollectionViewWaterfallLayout.git", :tag => 'v0.2.2' }
+  s.source       = { :git => "https://github.com/yesjun/CollectionViewWaterfallLayout.git", :tag => 'v0.3.0' }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
