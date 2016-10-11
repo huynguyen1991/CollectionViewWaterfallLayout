@@ -95,6 +95,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         return reusableView!
     }
     
+    // MARK: WaterfallLayoutDelegate
+    
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return cellSizes[indexPath.item]
+    }
+    
+    
+    
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, heightForHeaderInSection section: Int) -> Float {
         return self.headerHeight
     }
@@ -107,12 +115,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         layout.invalidateLayout()
         
         return true
-    }
-    
-    // MARK: WaterfallLayoutDelegate
-    
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return cellSizes[indexPath.item]
     }
 }
 
